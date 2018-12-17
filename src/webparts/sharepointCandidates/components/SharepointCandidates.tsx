@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './SharepointCandidates.module.scss';
 import { ISharepointCandidatesProps } from './ISharepointCandidatesProps';
-import { TextField, } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import pnp from 'sp-pnp-js';
@@ -22,9 +22,9 @@ export interface ISharepointCandidatesState {
 }
 
 export default class SharepointCandidates extends React.Component<ISharepointCandidatesProps, ISharepointCandidatesState> {
-  private contactsListName = "1be952178267464081093b559f3bff93";
-  private companiesListName = "Company";
-  private initialState = {
+  private contactsListName: string = "1be952178267464081093b559f3bff93";
+  private companiesListName: string = "Company";
+  private initialState: ISharepointCandidatesState = {
     contacts: [],
     companies: [],
     selectedCompany: null,
@@ -35,7 +35,7 @@ export default class SharepointCandidates extends React.Component<ISharepointCan
     loading: true
   };
 
-  constructor(props) {
+  constructor(props: ISharepointCandidatesProps) {
     super(props);
     pnp.setup({
       spfxContext: this.props.context
@@ -44,7 +44,7 @@ export default class SharepointCandidates extends React.Component<ISharepointCan
     this.saveClicked = this.saveClicked.bind(this);
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     this.getData();
   }
 
@@ -70,8 +70,8 @@ export default class SharepointCandidates extends React.Component<ISharepointCan
     });
   }
 
-  private getInitialCompany(cpmpanies: ISContacList[]) {
-    return cpmpanies.length == 0 ? null : { key: 0, text: cpmpanies[0].CompanyName }
+  private getInitialCompany(cpmpanies: ISContacList[]): IDropdownOption {
+    return cpmpanies.length == 0 ? null : { key: 0, text: cpmpanies[0].CompanyName };
   }
 
   private saveClicked(): void {
@@ -108,11 +108,11 @@ export default class SharepointCandidates extends React.Component<ISharepointCan
       this.validateRequired(this.state.email) &&
       this.validateRequired(this.state.salary) &&
       this.validateEmail(this.state.email) == null &&
-      this.validateNumber(this.state.salary) == null
+      this.validateNumber(this.state.salary) == null;
   }
 
   public render(): React.ReactElement<ISharepointCandidatesProps> {
-    let ddCompanyOptions = this.state.companies == null ? [] :
+    const ddCompanyOptions: IDropdownOption[] = this.state.companies == null ? [] :
       this.state.companies.map((item: ISContacList, index) => ({ key: index, text: item.CompanyName }));
 
     return (

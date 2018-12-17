@@ -9,8 +9,7 @@ const _columns: IColumn[] = [
         fieldName: 'Id',
         minWidth: 50,
         maxWidth: 100,
-        isResizable:true
-
+        isResizable: true
     },
     {
         key: 'FirstName',
@@ -18,7 +17,7 @@ const _columns: IColumn[] = [
         fieldName: 'FirstName',
         minWidth: 100,
         maxWidth: 200,
-        isResizable:true
+        isResizable: true
     },
     {
         key: 'Title',
@@ -26,7 +25,7 @@ const _columns: IColumn[] = [
         fieldName: 'Title',
         minWidth: 100,
         maxWidth: 200,
-        isResizable:true
+        isResizable: true
     },
     {
         key: 'Email',
@@ -34,7 +33,7 @@ const _columns: IColumn[] = [
         fieldName: 'Email',
         minWidth: 100,
         maxWidth: 200,
-        isResizable:true
+        isResizable: true
     },
     {
         key: 'Company',
@@ -42,7 +41,7 @@ const _columns: IColumn[] = [
         fieldName: 'Company',
         minWidth: 100,
         maxWidth: 200,
-        isResizable:true
+        isResizable: true
     },
     {
         key: 'Salary',
@@ -50,15 +49,15 @@ const _columns: IColumn[] = [
         fieldName: 'Salary',
         minWidth: 50,
         maxWidth: 100,
-        isResizable:true
+        isResizable: true
     }
 ];
 
 export const List = (props) => {
-    return <DetailsList        
+    return <DetailsList
         className={styles.detailsList}
         items={props.contacts}
-        columns={_columns}        
+        columns={_columns}
         selectionPreservedOnEmptyClick={true}
     />;
 };
